@@ -103,7 +103,7 @@ Alur: Pengumpulan Kebutuhan → Desain Cepat → Bangun Prototype → Evaluasi �
 Prasyarat: Node.js, JDK, Android Studio (emulator atau HP dengan USB debugging).
 
 ```bash
-git clone <url-repository-ini>
+git clone https://github.com/Ramaadhan/PemrogramanMobileWebViewFabric
 cd PemrogramanMobileWebViewFabric
 npm install
 npm start
