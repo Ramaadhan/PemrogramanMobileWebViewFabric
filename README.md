@@ -1,97 +1,143 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Prototyping WebView App: MIT App Inventor → React Native
 
-# Getting Started
+Aplikasi WebView yang dikembangkan dengan metode **Prototyping** dalam dua siklus.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+| Siklus | Teknologi | Peran |
+|--------|-----------|-------|
+| 1 | MIT App Inventor | Prototype awal (cepat, low-code) |
+| 2 | React Native (CLI) | Prototype lanjutan hasil evaluasi siklus 1 |
 
-## Step 1: Start Metro
+## Deskripsi dan Tujuan Aplikasi
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+Aplikasi menampilkan sebuah website di dalam aplikasi mobile menggunakan komponen WebView, sehingga konten web dapat dibuka tanpa berpindah ke browser. Pengembangan dilakukan dua kali dengan metode Prototyping: prototype cepat di MIT App Inventor, lalu disempurnakan di React Native.
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+**URL yang ditampilkan:**
 
-```sh
-# Using npm
+- **Siklus 1:** https://www.unla.ac.id (website Universitas Langlangbuana)
+- **Siklus 2:** https://reactnative.dev (website resmi React Native, dipakai untuk pengujian WebView)
+
+## Metode Pengembangan: Prototyping
+
+Alur: Pengumpulan Kebutuhan → Desain Cepat → Bangun Prototype → Evaluasi → Perbaikan → Siklus Berikutnya.
+
+### Siklus 1: MIT App Inventor (Prototype Awal)
+
+**1. Pengumpulan kebutuhan**
+
+- Aplikasi dapat membuka website melalui komponen WebView.
+- Tersedia tombol **Home** untuk kembali ke halaman awal.
+
+**2. Desain cepat**
+
+- Satu layar (`Screen1`) berisi tombol Home dan komponen WebView yang memenuhi layar.
+
+**3. Prototype dibangun**
+
+- File proyek: [`aplikasi_sederhana.aia`](./aplikasi_sederhana.aia)
+- Cara membuka: impor file `.aia` di [ai2.appinventor.mit.edu](https://ai2.appinventor.mit.edu) lewat menu Projects → Import project.
+
+![Tampilan siklus 1](./screenshots/Siklus_1.jpeg)
+
+**4. Evaluasi siklus 1**
+
+| Aspek | Temuan |
+|-------|--------|
+| Kelebihan | Cepat dibuat tanpa coding, WebView berhasil menampilkan website UNLA, tombol Home berfungsi sebagai navigasi dasar |
+| Kekurangan | Judul aplikasi masih default (`Screen1`), tampilan konten web terpotong di sisi kanan layar, kustomisasi terbatas, sulit dikelola dengan version control |
+| Kebutuhan baru | Judul aplikasi yang sesuai, tampilan yang lebih rapi di layar, kode yang bisa dikelola lewat Git, dan dukungan lintas platform |
+
+### Siklus 2: React Native WebView (Prototype Lanjutan)
+
+**1. Kebutuhan hasil evaluasi**
+
+- Header dengan judul aplikasi yang jelas, menggantikan judul default.
+- Tampilan WebView yang memenuhi layar dengan rapi.
+- Kode sumber yang dapat dikelola di Git dan dikembangkan lebih lanjut.
+
+**2. Desain perbaikan**
+
+- Aplikasi dibangun ulang dengan React Native dan TypeScript.
+- Header aplikasi diberi judul **"Portal Kampus - Fabric WebView"**.
+- WebView menampilkan halaman web secara penuh di bawah header.
+
+**3. Prototype dibangun**
+
+- Framework: React Native CLI (`@react-native-community/cli`)
+- Bahasa: TypeScript
+- Library utama: `react-native-webview`
+- Kode utama: [`App.tsx`](./App.tsx)
+
+![Tampilan siklus 2](./screenshots/Siklus_2.png)
+
+**4. Evaluasi siklus 2**
+
+| Aspek | Temuan |
+|-------|--------|
+| Kelebihan | Header kustom, tampilan web utuh dan responsif, kode dapat di-version control, kustomisasi penuh, dapat dikembangkan untuk Android dan iOS |
+| Kekurangan | Setup lingkungan lebih rumit (Node.js, JDK, Android Studio) dan memerlukan pengetahuan JavaScript/TypeScript |
+
+## Perbandingan Kedua Siklus
+
+| Aspek | Siklus 1 (App Inventor) | Siklus 2 (React Native) |
+|-------|-------------------------|--------------------------|
+| Kecepatan pembuatan | Sangat cepat | Sedang |
+| Kemampuan kustomisasi | Terbatas | Tinggi |
+| Kebutuhan coding | Tidak ada | TypeScript/JSX |
+| Judul aplikasi | Default (`Screen1`) | Kustom ("Portal Kampus - Fabric WebView") |
+| Tampilan konten web | Sebagian terpotong | Tampil penuh |
+| Version control (Git) | Sulit | Mudah |
+| Platform | Android | Android dan iOS |
+
+**Kesimpulan:** Siklus 1 dengan MIT App Inventor efektif untuk membuktikan ide dengan cepat: website dapat ditampilkan lewat WebView dan diuji di perangkat. Evaluasi siklus 1 menunjukkan keterbatasan pada tampilan, judul, dan pengelolaan kode, sehingga siklus 2 dengan React Native memperbaikinya dengan header kustom, tampilan yang lebih rapi, dan kode yang dapat dikelola di GitHub. Dengan Prototyping, perbaikan dilakukan bertahap berdasarkan hasil evaluasi, bukan menunggu produk akhir.
+
+## Cara Menjalankan
+
+### Siklus 1: MIT App Inventor
+
+1. Buka [ai2.appinventor.mit.edu](https://ai2.appinventor.mit.edu).
+2. Pilih **Projects → Import project (.aia)**, lalu pilih `aplikasi_sederhana.aia`.
+3. Jalankan lewat **MIT AI2 Companion**, atau buat APK lewat **Build → Android App (.apk)**.
+
+### Siklus 2: React Native CLI
+
+Prasyarat: Node.js, JDK, Android Studio (emulator atau HP dengan USB debugging).
+
+```bash
+git clone <url-repository-ini>
+cd PemrogramanMobileWebViewFabric
+npm install
 npm start
-
-# OR using Yarn
-yarn start
 ```
 
-## Step 2: Build and run your app
+Buka terminal kedua, lalu jalankan:
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
+```bash
 npm run android
-
-# OR using Yarn
-yarn android
 ```
 
-### iOS
+## Struktur Repository
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
+```
+.
+├── android/                 # proyek native Android
+├── ios/                     # proyek native iOS
+├── __tests__/
+├── screenshots/
+│   ├── Siklus_1.jpeg
+│   └── Siklus_2.png
+├── aplikasi_sederhana.aia   # siklus 1 (MIT App Inventor)
+├── App.tsx                  # siklus 2 (React Native)
+├── app.json
+├── package.json
+└── README.md
 ```
 
-Then, and every time you update your native dependencies, run:
+## Teknologi
 
-```sh
-bundle exec pod install
-```
+- MIT App Inventor (siklus 1)
+- React Native CLI dan TypeScript (siklus 2)
+- react-native-webview
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+## Catatan
 
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
-
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
-
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+Dibuat untuk keperluan tugas perkuliahan (Ujian Tengah Semester, Pemrograman Mobile).
