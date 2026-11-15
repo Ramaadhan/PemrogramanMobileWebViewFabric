@@ -36,7 +36,7 @@ Alur: Pengumpulan Kebutuhan → Desain Cepat → Bangun Prototype → Evaluasi �
 - File proyek: [`aplikasi_sederhana.aia`](./aplikasi_sederhana.aia)
 - Cara membuka: impor file `.aia` di [ai2.appinventor.mit.edu](https://ai2.appinventor.mit.edu) lewat menu Projects → Import project.
 
-![Tampilan siklus 1](./screenshots/Siklus_1.jpeg)
+![Tampilan siklus 1](./screenshots/Siklus1.jpeg)
 
 **4. Evaluasi siklus 1**
 
@@ -67,7 +67,7 @@ Alur: Pengumpulan Kebutuhan → Desain Cepat → Bangun Prototype → Evaluasi �
 - Library utama: `react-native-webview`
 - Kode utama: [`App.tsx`](./App.tsx)
 
-![Tampilan siklus 2](./screenshots/Siklus_2.png)
+![Tampilan siklus 2](./screenshots/Siklus2.png)
 
 **4. Evaluasi siklus 2**
 
